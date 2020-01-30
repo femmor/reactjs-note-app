@@ -4,7 +4,7 @@ import NoteItem from "./NoteItem";
 
 class NoteList extends Component {
   render() {
-    const { clearNotes, handleDelete, editNote, items } = this.props;
+    const { clearNotes, handleDelete, handleEdit, items } = this.props;
 
     return (
       <div>
@@ -15,7 +15,7 @@ class NoteList extends Component {
                 key={item.id}
                 title={item.title}
                 handleDelete={() => handleDelete(item.id)}
-                editNote={() => editNote(item.id)}
+                handleEdit={() => handleEdit(item.id)}
               />
             );
           })}

@@ -22,22 +22,22 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const newItem = {
+    const newNote = {
       id: this.state.id,
       title: this.state.item
     };
 
-    const updatedItems = [...this.state.items, newItem];
+    const updatedNotes = [...this.state.items, newNote];
 
     this.setState({
-      items: updatedItems,
+      items: updatedNotes,
       id: uuid(),
       item: "",
       editNote: false
     });
   };
 
-  editNote = id => {
+  handleEdit = id => {
     const filteredNotes = this.state.items.filter(item => item.id !== id);
     const selectedItem = this.state.items.find(item => item.id === id);
 
@@ -74,7 +74,7 @@ class App extends Component {
                 item={this.state.item}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
-                editNote={this.editNote}
+                handleEdit={this.handleEdit}
               />
             </div>
 
@@ -82,7 +82,7 @@ class App extends Component {
               <h3 className="text-center text-capitalize">notes</h3>
               <NoteList
                 handleDelete={this.handleDelete}
-                editNote={this.editNote}
+                handleEdit={this.handleEdit}
                 id={this.state.id}
                 items={this.state.items}
                 clearNotes={this.clearNotes}
