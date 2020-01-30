@@ -35,16 +35,26 @@ class App extends Component {
       item: "",
       editNote: false
     });
-
-    console.log(this.state);
   };
 
   editNote = id => {
-    console.log(`edit note, ${id}`);
+    const filteredNotes = this.state.items.filter(item => item.id !== id);
+    const selectedItem = this.state.items.find(item => item.id === id);
+
+    this.setState({
+      items: filteredNotes,
+      item: selectedItem.title,
+      id: id,
+      editNote: true
+    });
   };
 
   handleDelete = id => {
-    console.log(`delete note, ${id}`);
+    const filteredNotes = this.state.items.filter(item => item.id !== id);
+
+    this.setState({
+      items: filteredNotes
+    });
   };
 
   clearNotes = () => {
